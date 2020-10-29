@@ -1,0 +1,26 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+<?php
+$str = 'The regular expression is invalid.';
+$pattern = '/invalid//';
+$match = @preg_match($pattern, $str, $matches);
+
+if($match === false) {
+  // An error occurred
+  $err = preg_last_error();
+  if($err == PREG_INTERNAL_ERROR) {
+    echo 'Invalid regular expression.';
+  }
+} else if($match) {
+  // A match was found
+  echo $matches[0];
+} else {
+  // No matches were found
+  echo 'No matches found';
+}
+?>
+</body>
+</html>
